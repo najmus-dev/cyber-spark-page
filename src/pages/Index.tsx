@@ -7,7 +7,12 @@ import MissionSection from "@/components/MissionSection";
 import CTASection from "@/components/CTASection";
 import ContactSection from "@/components/ContactSection";
 
-const Index = () => {
+interface IndexProps {
+  onFeatureClick?: (featureId: string) => void;
+  onPricingClick?: () => void;
+}
+
+const Index = ({ onFeatureClick, onPricingClick }: IndexProps) => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -19,7 +24,7 @@ const Index = () => {
         </section>
         
         <section id="solutions">
-          <FeaturesSection />
+          <FeaturesSection onFeatureClick={onFeatureClick} />
           <WhyVigilSection />
         </section>
         

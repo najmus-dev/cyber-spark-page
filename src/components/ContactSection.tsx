@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MessageSquare, ArrowRight } from "lucide-react";
+import DemoRequestModal from "./DemoRequestModal";
 
 export default function ContactSection() {
   return (
@@ -87,11 +88,13 @@ export default function ContactSection() {
                 Schedule a personalized demo and see how Vigil can revolutionize your agency's operations.
               </p>
               
-              <Button variant="hero" size="lg" className="group w-full">
-                <MessageSquare className="mr-2 h-5 w-5" />
-                REQUEST A DEMO
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Button>
+              <DemoRequestModal>
+                <Button variant="hero" size="lg" className="group w-full">
+                  <MessageSquare className="mr-2 h-5 w-5" />
+                  REQUEST A DEMO
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </DemoRequestModal>
             </div>
           </motion.div>
         </div>

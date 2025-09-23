@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
+import DemoRequestModal from "@/components/DemoRequestModal";
 
 const navItems = [
   { name: "HOME", href: "#home" },
@@ -123,9 +124,11 @@ export default function Navigation() {
               transition={{ duration: 0.6, delay: 0.8 }}
               className="hidden md:block"
             >
-              <Button variant="hero" size="default" className="text-sm">
-                REQUEST DEMO
-              </Button>
+              <DemoRequestModal>
+                <Button variant="hero" size="default" className="text-sm">
+                  REQUEST DEMO
+                </Button>
+              </DemoRequestModal>
             </motion.div>
 
             {/* Mobile Menu Button */}
@@ -197,9 +200,11 @@ export default function Navigation() {
                   transition={{ duration: 0.3, delay: 0.4 }}
                   className="pt-4"
                 >
-                  <Button variant="hero" size="default" className="w-full">
-                    REQUEST DEMO
-                  </Button>
+                  <DemoRequestModal>
+                    <Button variant="hero" size="default" className="w-full">
+                      REQUEST DEMO
+                    </Button>
+                  </DemoRequestModal>
                 </motion.div>
               </div>
             </motion.div>

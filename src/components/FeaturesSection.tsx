@@ -1,47 +1,36 @@
 import { motion } from "framer-motion";
-import { Brain, MessageCircle, FileText, Zap, Shield, Database } from "lucide-react";
+import { Shield, Zap, Eye } from "lucide-react";
 import FeatureCard from "./FeatureCard";
+
+interface FeaturesSectionProps {
+  onFeatureClick?: (featureId: string) => void;
+}
 
 const features = [
   {
-    icon: Brain,
-    title: "SMART EVIDENCE SUBMISSION",
-    description: "Automatically extract and index data from images and documents, reducing manual entry and ensuring accuracy.",
-    accentColor: "primary" as const
-  },
-  {
-    icon: MessageCircle,
-    title: "CONVERSATIONAL AI AGENT", 
-    description: "Our AI chats with officers to collect key details and instantly creates complete, accurate reports.",
-    accentColor: "secondary" as const
-  },
-  {
-    icon: FileText,
-    title: "INSTANT REPORT GENERATION",
-    description: "Quickly compile and export detailed reports with built-in human oversight, ensuring compliance and precision.",
-    accentColor: "accent" as const
-  },
-  {
-    icon: Zap,
-    title: "SMART DISPATCH & ALLOCATION",
-    description: "Optimize emergency response times by leveraging real-time data with AI-powered insights.",
-    accentColor: "primary" as const
-  },
-  {
-    icon: Database,
-    title: "AUTONOMOUS EVIDENCE MANAGEMENT",
-    description: "Automatically organize, tag, and categorize evidence from reports, surveillance, and public data.",
-    accentColor: "secondary" as const
-  },
-  {
+    id: "intelligent-monitoring",
     icon: Shield,
-    title: "REAL-TIME CRIME ANALYTICS",
-    description: "Continuously analyzes police reports and surveillance feeds to detect patterns and forecast hotspots.",
-    accentColor: "accent" as const
+    title: "Intelligent Monitoring",
+    description: "AI-powered surveillance and threat detection systems that provide real-time analysis and alerts.",
+    gradient: "bg-gradient-to-br from-emerald-500 to-teal-600"
+  },
+  {
+    id: "automated-workflows", 
+    icon: Zap,
+    title: "Automated Workflows",
+    description: "Streamline operations with intelligent process automation and smart resource allocation.",
+    gradient: "bg-gradient-to-br from-blue-500 to-indigo-600"
+  },
+  {
+    id: "real-time-insights",
+    icon: Eye,
+    title: "Real-time Insights",
+    description: "Advanced analytics and reporting with predictive capabilities for data-driven decisions.",
+    gradient: "bg-gradient-to-br from-purple-500 to-pink-600"
   }
 ];
 
-export default function FeaturesSection() {
+export default function FeaturesSection({ onFeatureClick }: FeaturesSectionProps) {
   return (
     <section className="py-24 relative overflow-hidden">
       <div className="container mx-auto px-4">
@@ -60,7 +49,7 @@ export default function FeaturesSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <span className="hero-gradient">VIGIL SERVICES</span>
+            <span className="hero-gradient">VIGIL SOLUTIONS</span>
           </motion.h2>
           <motion.p 
             className="text-xl text-muted-foreground max-w-3xl mx-auto"
@@ -74,15 +63,16 @@ export default function FeaturesSection() {
         </motion.div>
 
         {/* Features grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <FeatureCard
-              key={feature.title}
-              icon={feature.icon}
+              key={feature.id}
               title={feature.title}
               description={feature.description}
-              index={index}
-              accentColor={feature.accentColor}
+              icon={feature.icon}
+              gradient={feature.gradient}
+              delay={index * 0.2}
+              onClick={() => onFeatureClick?.(feature.id)}
             />
           ))}
         </div>

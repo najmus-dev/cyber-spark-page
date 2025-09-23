@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import Globe3D from "./Globe3D";
+import DemoRequestModal from "./DemoRequestModal";
+import ContactModal from "./ContactModal";
 
 export default function HeroSection() {
   return (
@@ -73,15 +75,19 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="flex flex-col sm:flex-row gap-4 pt-4"
           >
-            <Button variant="hero" size="xl" className="group">
-              REQUEST A DEMO
-              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </Button>
+            <DemoRequestModal>
+              <Button variant="hero" size="xl" className="group">
+                REQUEST A DEMO
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </DemoRequestModal>
             
-            <Button variant="hero-outline" size="xl" className="group">
-              <Play className="mr-2 h-5 w-5" />
-              ABOUT VIGIL
-            </Button>
+            <ContactModal>
+              <Button variant="hero-outline" size="xl" className="group">
+                <Play className="mr-2 h-5 w-5" />
+                ABOUT VIGIL
+              </Button>
+            </ContactModal>
           </motion.div>
         </motion.div>
 
